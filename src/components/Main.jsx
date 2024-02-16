@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Card from './Card';
 
-const CARDS = 3;
+const CARDS = 6;
 
 export default function Main() {
   const [points, setPoints] = useState(0);
@@ -13,7 +13,16 @@ export default function Main() {
     for (let i = 0; i < cards; i++) {
       cardsArray.push(<Card key={i} keyProp={i} handleClick={handlePoints} />);
     }
+    shuffleCards(cardsArray);
     return cardsArray;
+  }
+
+  // Shuffle cards with Fisher–Yates shuffle
+  function shuffleCards(cardsArray) {
+    for (let i = cardsArray.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
+    }
   }
 
   function handlePoints(cardKey) {
