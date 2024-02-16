@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from 'react';
 import Card from './Card';
 
-const CARDS = 6;
-
-export default function Main({ points, setPoints, best, setBest }) {
-  const [clicked, setClicked] = useState(Array(CARDS).fill(false));
-
+export default function Main({
+  cards,
+  points,
+  setPoints,
+  best,
+  setBest,
+  clicked,
+  setClicked,
+}) {
   function createCards(cards) {
     let cardsArray = [];
     for (let i = 0; i < cards; i++) {
@@ -29,10 +32,10 @@ export default function Main({ points, setPoints, best, setBest }) {
     if (!clicked[cardKey]) {
       setPoints(points + 1);
       handleClicked(cardKey);
+      handleBest(points + 1);
     } else {
-      handleBest(points);
       setPoints(0);
-      setClicked(Array(CARDS).fill(false));
+      setClicked(Array(cards).fill(false));
     }
   }
 
@@ -51,7 +54,7 @@ export default function Main({ points, setPoints, best, setBest }) {
 
   return (
     <main>
-      <div className="cards">{createCards(CARDS)}</div>
+      <div className="cards">{createCards(cards)}</div>
     </main>
   );
 }
