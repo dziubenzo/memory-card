@@ -9,7 +9,7 @@ export default function App() {
   const [best, setBest] = useState(0);
   return (
     <>
-      <Header />
+      <Header points={points} best={best} />
       <Main
         points={points}
         setPoints={setPoints}

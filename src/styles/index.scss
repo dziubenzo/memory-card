@@ -21,6 +21,7 @@
 }
 
 header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +30,20 @@ header {
     text-align: center;
     font-size: 3rem;
     font-weight: 500;
+  }
+
+  .scoreboard {
+    position: absolute;
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+
+    .current-score-value,
+    .best-score-value {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
   }
 }
 
@@ -55,7 +70,7 @@ main {
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
+    gap: 32px;
 
     .card {
       display: flex;
