@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
+
 import { useState } from 'react';
 import Card from './Card';
 
 const CARDS = 6;
 
-export default function Main() {
-  const [points, setPoints] = useState(0);
-  const [best, setBest] = useState(0);
+export default function Main({ points, setPoints, best, setBest }) {
   const [clicked, setClicked] = useState(Array(CARDS).fill(false));
 
   function createCards(cards) {
