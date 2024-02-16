@@ -1,5 +1,23 @@
+@use 'utilities' as *;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--bg-colour);
+  color: var(--main-colour);
+  font-family: var(--main-font);
+  font-weight: 400;
+}
+
+html {
+  padding: 1em;
+}
+
+header {
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+  }
 }
