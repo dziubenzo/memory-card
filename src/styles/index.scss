@@ -21,3 +21,21 @@ header {
     font-weight: 500;
   }
 }
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+
+  p {
+    span {
+      font-weight: 500;
+    }
+  }
+
+  img {
+    cursor: pointer;
+    width: 32px;
+  }
+}
