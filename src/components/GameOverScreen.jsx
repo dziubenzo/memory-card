@@ -1,4 +1,4 @@
-export default function GameOver() {
+export default function GameOverScreen() {
   return (
     <div className="game-over-screen">
       <img

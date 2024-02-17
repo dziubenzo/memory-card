@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Card from './Card';
+import LoadingScreen from './LoadingScreen';
 
 let urlArray = [];
 const catFetchURL = 'https://api.thecatapi.com/v1/images/search?limit=';
@@ -101,19 +102,7 @@ export default function Main({
       {imagesFetched ? (
         <div className="cards">{createCards(cards)}</div>
       ) : (
-        <div className="loading-screen">
-          {animal === 'cat' ? (
-            <>
-              <img src="/cat.svg" alt="Cat Loading Icon" />
-              <p>Loading your {cards} cats...</p>
-            </>
-          ) : (
-            <>
-              <img src="/dog.svg" alt="Dog Loading Icon" />
-              <p>Loading your {cards} dogs...</p>
-            </>
-          )}
-        </div>
+        <LoadingScreen animal={animal} cards={cards} />
       )}
     </>
   );

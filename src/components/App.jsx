@@ -27,7 +27,7 @@ export default function App() {
     }
   }
 
-  function handleAnimal() {
+  function handleAnimal(event) {
     const clickedAnimal = event.target.value;
     if (clickedAnimal === animal) {
       return;
