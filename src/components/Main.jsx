@@ -23,6 +23,7 @@ export default function Main({
   setClicked,
 }) {
   const [imagesFetched, setImagesFetched] = useState(false);
+  const [shuffle, setShuffle] = useState(false);
 
   useEffect(() => {
     async function fetchImages(apiURL, apiKey) {
@@ -57,6 +58,7 @@ export default function Main({
           keyProp={i}
           animal={animal}
           url={urlArray[i]}
+          shuffle={shuffle}
           handleClick={handlePoints}
         />,
       );
@@ -74,6 +76,7 @@ export default function Main({
   }
 
   function handlePoints(cardKey) {
+    setShuffle(true);
     if (!clicked[cardKey]) {
       setPoints(points + 1);
       handleClicked(cardKey);
@@ -82,6 +85,9 @@ export default function Main({
       setPoints(0);
       setClicked(Array(cards).fill(false));
     }
+    setTimeout(() => {
+      setShuffle(false);
+    }, 1000);
   }
 
   function handleClicked(cardKey) {

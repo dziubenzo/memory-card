@@ -135,6 +135,7 @@ main {
       border-radius: 8px;
       cursor: pointer;
       outline: 2px solid var(--main-colour);
+      transition: transform 0.1s linear;
 
       .card-image {
         width: 100%;

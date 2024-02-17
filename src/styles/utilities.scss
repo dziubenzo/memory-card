@@ -13,3 +13,20 @@ html {
     transform: rotate(360deg);
   }
 }
+
+@keyframes shuffle {
+  from {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  50% {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+}
+
+.shuffle {
+  width: 100%;
+  height: 250px;
+  opacity: 0.5;
+  content: linear-gradient(var(--main-colour), var(--main-colour));
+  animation: shuffle 2s ease-in-out;
+}

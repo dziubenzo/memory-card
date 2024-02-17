@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
 
-export default function Card({ keyProp, animal, url, handleClick }) {
+export default function Card({ keyProp, animal, url, shuffle, handleClick }) {
   return (
     <div
-      className="card"
-      onClick={() => {
-        handleClick(keyProp);
-      }}
+      className={shuffle ? 'card shuffle' : 'card'}
+      onClick={
+        shuffle
+          ? null
+          : () => {
+              handleClick(keyProp);
+            }
+      }
     >
       <img
         className="card-image"
         src={url}
-        alt={animal === 'cat' ? "Cat Image" : "Dog Image"}
+        alt={animal === 'cat' ? 'Cat Image' : 'Dog Image'}
       />
     </div>
   );
