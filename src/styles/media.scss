@@ -1,0 +1,11 @@
+@mixin queries {
+  @media (hover: hover) {
+    header {
+      button:hover {
+        background-color: var(--main-colour);
+        color: var(--bg-colour);
+        outline: none;
+      }
+    }
+  }
+}

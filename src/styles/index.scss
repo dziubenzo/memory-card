@@ -1,4 +1,5 @@
 @use 'utilities' as *;
+@use 'media';
 
 * {
   margin: 0;
@@ -8,6 +9,12 @@
   color: var(--main-colour);
   font-family: var(--main-font);
   font-weight: 400;
+}
+
+*:focus-visible {
+  outline: 2px solid white !important;
+  outline-offset: 5px;
+  border-radius: 8px;
 }
 
 #root {
@@ -25,6 +32,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 16px;
 
   h2 {
     text-align: center;
@@ -43,6 +52,19 @@ header {
     .best-score-value {
       font-size: 1.3rem;
       font-weight: 500;
+    }
+  }
+
+  .difficulty-chooser {
+    display: flex;
+    gap: 16px;
+
+    button {
+      outline: 2px solid var(--main-colour);
+      border: none;
+      border-radius: 8px;
+      padding: 0.5em;
+      cursor: pointer;
     }
   }
 }
@@ -93,3 +115,5 @@ main {
     }
   }
 }
+
+@include media.queries;

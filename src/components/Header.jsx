@@ -11,11 +11,11 @@ export default function Header({
 }) {
   return (
     <header>
+      <h2>Memory Card</h2>
       <DifficultyChooser
         difficultyLevels={difficultyLevels}
         setDifficulty={setDifficulty}
       />
-      <h2>Memory Card</h2>
       <Scoreboard points={points} best={best} />
     </header>
   );
