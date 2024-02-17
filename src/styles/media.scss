@@ -7,9 +7,80 @@
         outline: none;
       }
     }
-    
+
     .card:hover {
       transform: scale(1.3);
+    }
+  }
+
+  @media (width < 700px) {
+    #root {
+      gap: 0;
+      padding: 0 1em;
+    }
+
+    header {
+      position: sticky;
+      top: 0px;
+      padding: 1em 0.5em;
+
+      h2 {
+        align-self: start;
+        font-size: 1.9rem;
+      }
+
+      .animal-chooser {
+        position: initial;
+        flex-direction: row;
+        align-self: center;
+      }
+
+      .difficulty-chooser {
+        button {
+          padding: 0.25em 0.5em;
+        }
+      }
+
+      .scoreboard {
+        top: 16px;
+        right: 8px;
+        column-gap: 8px;
+        background: transparent;
+
+        * {
+          background: transparent;
+        }
+      }
+    }
+
+    footer {
+      position: sticky;
+      bottom: 0;
+      padding: 1em 0.5em;
+    }
+
+    main {
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+        gap: 16px;
+
+        .card {
+          .card-image {
+            height: 200px;
+          }
+        }
+      }
+
+      .game-over-screen {
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .shuffle {
+      height: 200px;
     }
   }
 }

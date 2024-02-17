@@ -60,8 +60,14 @@ header {
     position: absolute;
     right: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: min-content 1fr;
+    column-gap: 16px;
     place-items: center;
+
+    .current-score,
+    .best-score {
+      justify-self: end;
+    }
 
     .current-score-value,
     .best-score-value {

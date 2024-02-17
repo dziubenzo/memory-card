@@ -29,9 +29,6 @@ export default function App() {
 
   function handleAnimal(event) {
     const clickedAnimal = event.target.value;
-    if (clickedAnimal === animal) {
-      return;
-    }
     // Make sure the value attribute is always one of the two default values
     if (ANIMALS.includes(clickedAnimal)) {
       setAnimal(clickedAnimal);
@@ -43,12 +40,12 @@ export default function App() {
   return (
     <>
       <header>
+        <AppTitle />
         <AnimalChooser
           currentAnimal={animal}
           animals={ANIMALS}
           changeAnimal={handleAnimal}
         />
-        <AppTitle />
         <DifficultyChooser
           currentDifficulty={cards}
           difficultyLevels={DIFFICULTY_LEVELS}
