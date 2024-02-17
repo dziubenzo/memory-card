@@ -41,6 +41,21 @@ header {
     font-weight: 500;
   }
 
+  button {
+    outline: 2px solid var(--main-colour);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: var(--main-colour);
+      color: var(--bg-colour);
+      outline: none;
+      cursor: initial;
+    }
+  }
+
   .scoreboard {
     position: absolute;
     right: 0;
@@ -58,21 +73,14 @@ header {
   .difficulty-chooser {
     display: flex;
     gap: 16px;
+  }
 
-    button {
-      outline: 2px solid var(--main-colour);
-      border: none;
-      border-radius: 8px;
-      padding: 0.5em;
-      cursor: pointer;
-
-      &:disabled {
-        background-color: var(--main-colour);
-        color: var(--bg-colour);
-        outline: none;
-        cursor: initial;
-      }
-    }
+  .animal-chooser {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
