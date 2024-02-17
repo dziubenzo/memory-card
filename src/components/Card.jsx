@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-export default function Card({ handleClick, keyProp }) {
+export default function Card({ keyProp, catUrl, handleClick }) {
   return (
     <div
       className="card"
@@ -8,10 +8,11 @@ export default function Card({ handleClick, keyProp }) {
         handleClick(keyProp);
       }}
     >
-      <div className="card-image">
-        <p>Placeholder {keyProp}</p>
-      </div>
-      <p className="card-description">Description {keyProp}</p>
+      <img
+        className="card-image"
+        src={catUrl}
+        alt="Clickable Cat Image"
+      />
     </div>
   );
 }

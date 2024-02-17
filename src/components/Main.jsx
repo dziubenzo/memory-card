@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 
+import { useEffect, useState } from 'react';
 import Card from './Card';
+
+let urlArray = [];
 
 export default function Main({
   cards,
@@ -11,12 +14,46 @@ export default function Main({
   clicked,
   setClicked,
 }) {
+  const [catsFetched, setCatsFetched] = useState(false);
+
+  useEffect(() => {
+    async function fetchCats() {
+      setCatsFetched(false);
+      const rawCats = await fetch(
+        `https://api.thecatapi.com/v1/images/search?limit=${cards}`,
+        {
+          mode: 'cors',
+          headers: {
+            'x-api-key':
+              'live_5U3HmwHTVwwEo4cvNuopIIl7QcqMPZqvLPAb1fbUvBf99fD1W9scWpt8JG9jIGn9',
+          },
+        },
+      );
+      const parsedCats = await rawCats.json();
+      for (const cat of parsedCats) {
+        urlArray.push(cat.url);
+      }
+      setCatsFetched(true);
+    }
+    // Clear the array on difficulty change
+    urlArray = [];
+    fetchCats();
+  }, [cards]);
+
   function createCards(cards) {
     let cardsArray = [];
     for (let i = 0; i < cards; i++) {
-      cardsArray.push(<Card key={i} keyProp={i} handleClick={handlePoints} />);
+      cardsArray.push(
+        <Card
+          key={i}
+          keyProp={i}
+          catUrl={urlArray[i]}
+          handleClick={handlePoints}
+        />,
+      );
     }
     shuffleCards(cardsArray);
+
     return cardsArray;
   }
 
@@ -54,7 +91,7 @@ export default function Main({
 
   return (
     <main>
-      <div className="cards">{createCards(cards)}</div>
+      <div className="cards">{catsFetched && createCards(cards)}</div>
     </main>
   );
 }

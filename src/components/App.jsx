@@ -3,7 +3,7 @@ import Footer from './Footer';
 import Main from './Main';
 import Scoreboard from './Scoreboard';
 import DifficultyChooser from './DifficultyChooser';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AppTitle from './AppTitle';
 
 export default function App() {
@@ -12,27 +12,6 @@ export default function App() {
   const [points, setPoints] = useState(0);
   const [best, setBest] = useState(0);
   const [clicked, setClicked] = useState(Array(cards).fill(false));
-
-  useEffect(() => {
-    let urlArray = [];
-    async function fetchCats() {
-      const rawCats = await fetch(
-        `https://api.thecatapi.com/v1/images/search?limit=${cards}`,
-        {
-          headers: {
-            'x-api-key':
-              'live_5U3HmwHTVwwEo4cvNuopIIl7QcqMPZqvLPAb1fbUvBf99fD1W9scWpt8JG9jIGn9',
-          },
-        },
-      );
-      const parsedCats = await rawCats.json();
-      for (const cat of parsedCats) {
-        urlArray.push(cat.url);
-      }
-      console.log(urlArray);
-    }
-    fetchCats();
-  }, [cards]);
 
   function handleCards(event) {
     const newDifficulty = Number(event.target.value);
