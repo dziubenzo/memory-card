@@ -97,7 +97,7 @@ export default function Main({
   }
 
   return (
-    <main>
+    <>
       {imagesFetched ? (
         <div className="cards">{createCards(cards)}</div>
       ) : (
@@ -115,6 +115,6 @@ export default function Main({
           )}
         </div>
       )}
-    </main>
+    </>
   );
 }

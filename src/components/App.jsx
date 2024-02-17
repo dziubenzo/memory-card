@@ -6,6 +6,7 @@ import DifficultyChooser from './DifficultyChooser';
 import { useState } from 'react';
 import AppTitle from './AppTitle';
 import AnimalChooser from './AnimalChooser';
+import GameOverScreen from './GameOverScreen';
 
 export default function App() {
   const DIFFICULTY_LEVELS = [5, 10, 20, 100];
@@ -55,16 +56,22 @@ export default function App() {
         />
         <Scoreboard points={points} best={best} />
       </header>
-      <Main
-        animal={animal}
-        cards={cards}
-        points={points}
-        setPoints={setPoints}
-        best={best}
-        setBest={setBest}
-        clicked={clicked}
-        setClicked={setClicked}
-      />
+      <main>
+        {points === cards ? (
+          <GameOverScreen />
+        ) : (
+          <Main
+            animal={animal}
+            cards={cards}
+            points={points}
+            setPoints={setPoints}
+            best={best}
+            setBest={setBest}
+            clicked={clicked}
+            setClicked={setClicked}
+          />
+        )}
+      </main>
       <footer>
         <Footer />
       </footer>
