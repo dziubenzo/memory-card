@@ -5,9 +5,12 @@ import Scoreboard from './Scoreboard';
 import DifficultyChooser from './DifficultyChooser';
 import { useState } from 'react';
 import AppTitle from './AppTitle';
+import AnimalChooser from './AnimalChooser';
 
 export default function App() {
   const DIFFICULTY_LEVELS = [5, 10, 20, 100];
+  const ANIMALS = ['cat', 'dog'];
+  const [animal, setAnimal] = useState('cat');
   const [cards, setCards] = useState(5);
   const [points, setPoints] = useState(0);
   const [best, setBest] = useState(0);
@@ -22,9 +25,28 @@ export default function App() {
       setClicked(Array(newDifficulty).fill(false));
     }
   }
+
+  function handleAnimal() {
+    const clickedAnimal = event.target.value;
+    if (clickedAnimal === animal) {
+      return;
+    }
+    // Make sure the value attribute is always one of the two default values
+    if (ANIMALS.includes(clickedAnimal)) {
+      setAnimal(clickedAnimal);
+      setCards(5);
+      setPoints(0);
+      setClicked(Array(5).fill(false));
+    }
+  }
   return (
     <>
       <header>
+        <AnimalChooser
+          currentAnimal={animal}
+          animals={ANIMALS}
+          changeAnimal={handleAnimal}
+        />
         <AppTitle />
         <DifficultyChooser
           currentDifficulty={cards}
@@ -34,6 +56,7 @@ export default function App() {
         <Scoreboard points={points} best={best} />
       </header>
       <Main
+        animal={animal}
         cards={cards}
         points={points}
         setPoints={setPoints}

@@ -4,8 +4,15 @@ import { useEffect, useState } from 'react';
 import Card from './Card';
 
 let urlArray = [];
+const catFetchURL = 'https://api.thecatapi.com/v1/images/search?limit=';
+const catAPIKey =
+  'live_5U3HmwHTVwwEo4cvNuopIIl7QcqMPZqvLPAb1fbUvBf99fD1W9scWpt8JG9jIGn9';
+const dogFetchURL = 'https://api.thedogapi.com/v1/images/search?limit=';
+const dogAPIKey =
+  'live_01FxcvsYkWKBCpRstaKszIAppJcXxEkxXd1QIFcz63tbn2PHGtnZKmDrRvYMz3N8';
 
 export default function Main({
+  animal,
   cards,
   points,
   setPoints,
@@ -14,31 +21,31 @@ export default function Main({
   clicked,
   setClicked,
 }) {
-  const [catsFetched, setCatsFetched] = useState(false);
+  const [imagesFetched, setImagesFetched] = useState(false);
 
   useEffect(() => {
-    async function fetchCats() {
-      setCatsFetched(false);
-      const rawCats = await fetch(
-        `https://api.thecatapi.com/v1/images/search?limit=${cards}`,
-        {
-          mode: 'cors',
-          headers: {
-            'x-api-key':
-              'live_5U3HmwHTVwwEo4cvNuopIIl7QcqMPZqvLPAb1fbUvBf99fD1W9scWpt8JG9jIGn9',
-          },
+    async function fetchImages(apiURL, apiKey) {
+      setImagesFetched(false);
+      const rawImages = await fetch(apiURL + cards, {
+        mode: 'cors',
+        headers: {
+          'x-api-key': apiKey,
         },
-      );
-      const parsedCats = await rawCats.json();
-      for (const cat of parsedCats) {
-        urlArray.push(cat.url);
+      });
+      const parsedImages = await rawImages.json();
+      for (const image of parsedImages) {
+        urlArray.push(image.url);
       }
-      setCatsFetched(true);
+      setImagesFetched(true);
     }
-    // Clear the array on difficulty change
+    // Clear the array on difficulty or animal change
     urlArray = [];
-    fetchCats();
-  }, [cards]);
+    if (animal === 'cat') {
+      fetchImages(catFetchURL, catAPIKey);
+    } else {
+      fetchImages(dogFetchURL, dogAPIKey);
+    }
+  }, [animal, cards]);
 
   function createCards(cards) {
     let cardsArray = [];
@@ -47,13 +54,13 @@ export default function Main({
         <Card
           key={i}
           keyProp={i}
-          catUrl={urlArray[i]}
+          animal={animal}
+          url={urlArray[i]}
           handleClick={handlePoints}
         />,
       );
     }
     shuffleCards(cardsArray);
-
     return cardsArray;
   }
 
@@ -91,12 +98,21 @@ export default function Main({
 
   return (
     <main>
-      {catsFetched ? (
+      {imagesFetched ? (
         <div className="cards">{createCards(cards)}</div>
       ) : (
         <div className="loading-screen">
-          <img src="/cat.svg" alt="Cat Loading Icon" />
-          <p>Loading your {cards} cats...</p>
+          {animal === 'cat' ? (
+            <>
+              <img src="/cat.svg" alt="Cat Loading Icon" />
+              <p>Loading your {cards} cats...</p>
+            </>
+          ) : (
+            <>
+              <img src="/dog.svg" alt="Dog Loading Icon" />
+              <p>Loading your {cards} dogs...</p>
+            </>
+          )}
         </div>
       )}
     </main>
