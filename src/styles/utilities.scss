@@ -3,5 +3,13 @@
 html {
   --bg-colour: rgb(40, 40, 40);
   --main-colour: rgb(255, 185, 55);
+  --icon-main-colour: invert(79%) sepia(85%) saturate(1439%) hue-rotate(328deg)
+    brightness(100%) contrast(102%);
   --main-font: 'Fredoka', sans-serif;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }

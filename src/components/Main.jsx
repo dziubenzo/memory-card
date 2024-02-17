@@ -91,7 +91,14 @@ export default function Main({
 
   return (
     <main>
-      <div className="cards">{catsFetched && createCards(cards)}</div>
+      {catsFetched ? (
+        <div className="cards">{createCards(cards)}</div>
+      ) : (
+        <div className="loading-screen">
+          <img src="/cat.svg" alt="Cat Loading Icon" />
+          <p>Loading your {cards} cats...</p>
+        </div>
+      )}
     </main>
   );
 }

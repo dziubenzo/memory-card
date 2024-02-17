@@ -11,7 +11,7 @@ export default function Card({ keyProp, catUrl, handleClick }) {
       <img
         className="card-image"
         src={catUrl}
-        alt="Clickable Cat Image"
+        alt="Cat Image"
       />
     </div>
   );

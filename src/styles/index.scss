@@ -22,7 +22,7 @@
   min-height: 100svh;
   margin: auto;
   display: grid;
-  grid-template-rows: 1fr auto 1fr;
+  grid-template-rows: auto 1fr auto;
   gap: 32px;
   padding: 1em;
 }
@@ -96,6 +96,24 @@ footer {
 }
 
 main {
+  .loading-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      background-color: initial;
+      filter: var(--icon-main-colour);
+      width: 82px;
+      animation: rotate 2s ease infinite;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
