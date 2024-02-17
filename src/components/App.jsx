@@ -14,11 +14,12 @@ export default function App() {
   const [clicked, setClicked] = useState(Array(cards).fill(false));
 
   function handleCards(event) {
+    const newDifficulty = Number(event.target.value);
     // Make sure the value attribute is always one of the four default values
-    if (DIFFICULTY_LEVELS.includes(Number(event.target.value))) {
-      setCards(Number(event.target.value));
+    if (DIFFICULTY_LEVELS.includes(newDifficulty)) {
+      setCards(newDifficulty);
       setPoints(0);
-      setClicked(Array(Number(event.target.value)).fill(false));
+      setClicked(Array(newDifficulty).fill(false));
     }
   }
   return (
@@ -26,6 +27,7 @@ export default function App() {
       <header>
         <AppTitle />
         <DifficultyChooser
+          currentDifficulty={cards}
           difficultyLevels={DIFFICULTY_LEVELS}
           setDifficulty={handleCards}
         />

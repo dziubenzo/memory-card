@@ -23,7 +23,7 @@
   margin: auto;
   display: grid;
   grid-template-rows: 1fr auto 1fr;
-  gap: 16px;
+  gap: 32px;
   padding: 1em;
 }
 
@@ -65,6 +65,13 @@ header {
       border-radius: 8px;
       padding: 0.5em;
       cursor: pointer;
+
+      &:disabled {
+        background-color: var(--main-colour);
+        color: var(--bg-colour);
+        outline: none;
+        cursor: initial;
+      }
     }
   }
 }
