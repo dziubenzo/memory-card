@@ -1,7 +1,9 @@
 export default function Footer() {
   return (
-    <footer>
-      <p>developed by <span>dziubenzo</span></p>
+    <>
+      <p>
+        developed by <span>dziubenzo</span>
+      </p>
       <a
         href="https://github.com/dziubenzo/"
         target="_blank"
@@ -10,6 +12,6 @@ export default function Footer() {
       >
         <img src="./github-mark-white.svg" alt="GitHub Logo" />
       </a>
-    </footer>
+    </>
   );
 }

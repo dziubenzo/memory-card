@@ -1,8 +1,10 @@
 import '../styles/index.scss';
 import Footer from './Footer';
-import Header from './Header';
 import Main from './Main';
+import Scoreboard from './Scoreboard';
+import DifficultyChooser from './DifficultyChooser';
 import { useState } from 'react';
+import AppTitle from './AppTitle';
 
 export default function App() {
   const DIFFICULTY_LEVELS = [5, 10, 20, 100];
@@ -21,12 +23,14 @@ export default function App() {
   }
   return (
     <>
-      <Header
-        points={points}
-        best={best}
-        difficultyLevels={DIFFICULTY_LEVELS}
-        setDifficulty={handleCards}
-      />
+      <header>
+        <AppTitle />
+        <DifficultyChooser
+          difficultyLevels={DIFFICULTY_LEVELS}
+          setDifficulty={handleCards}
+        />
+        <Scoreboard points={points} best={best} />
+      </header>
       <Main
         cards={cards}
         points={points}
@@ -36,7 +40,9 @@ export default function App() {
         clicked={clicked}
         setClicked={setClicked}
       />
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
