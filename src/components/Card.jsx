@@ -15,7 +15,7 @@ export default function Card({ keyProp, animal, url, shuffle, handleClick }) {
       <img
         className="card-image"
         src={url}
-        alt={animal === 'cat' ? 'Cat Image' : 'Dog Image'}
+        alt={animal === 'cat' ? 'Cat' : 'Dog'}
       />
     </div>
   );
