@@ -23,6 +23,7 @@
       position: sticky;
       top: 0px;
       padding: 1em 0.5em;
+      z-index: 1;
 
       h2 {
         align-self: start;
@@ -62,12 +63,12 @@
     main {
       .cards {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 16px;
 
         .card {
           .card-image {
-            height: 200px;
+            height: 175px;
           }
         }
       }
@@ -80,7 +81,7 @@
     }
 
     .shuffle {
-      height: 200px;
+      height: 175px;
     }
   }
 }
